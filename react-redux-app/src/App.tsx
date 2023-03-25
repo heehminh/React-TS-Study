@@ -1,5 +1,5 @@
-import React from "react";
-import { useState } from "react";
+import axios from "axios";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "./reducers";
 
@@ -9,12 +9,33 @@ type Props = {
   onDecrement: () => void;
 };
 
+interface Post {
+  userId: number;
+  id: number;
+  title: string;
+}
+
 function App({ value, onIncrement, onDecrement }: Props) {
   const dispatch = useDispatch();
   const todos: string[] = useSelector((state: RootState) => state.todos);
   const counter = useSelector((state: RootState) => state.counter);
+  const posts: Post[] = useSelector((state: RootState) => state.posts);
 
   const [todoValue, setTodoValue] = useState("");
+
+  useEffect(() => {
+    dispatch(fetchPosts());
+  }, [dispatch]);
+
+  const fetchPosts = (): any => {
+    return async function fetchPostsThunk(dispatch: any, getState: any) {
+      // action을 보내거나, state를 읽는 로직 작성
+      const response = await axios.get(
+        "https://jsonplaceholder.typicode.com/posts"
+      );
+      dispatch({ type: "FETCH_POSTS", payload: response.data });
+    };
+  };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTodoValue(e.target.value);
@@ -40,6 +61,11 @@ function App({ value, onIncrement, onDecrement }: Props) {
         <input type="text" value={todoValue} onChange={handleChange}></input>
         <input type="submit"></input>
       </form>
+      <ul>
+        {posts.map((post, index) => (
+          <li key={index}>{post.title}</li>
+        ))}
+      </ul>
     </div>
   );
 }
