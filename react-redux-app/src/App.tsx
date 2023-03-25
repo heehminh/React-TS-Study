@@ -1,6 +1,6 @@
-import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { fetchPosts } from "./actions/posts";
 import { RootState } from "./reducers";
 
 type Props = {
@@ -26,16 +26,6 @@ function App({ value, onIncrement, onDecrement }: Props) {
   useEffect(() => {
     dispatch(fetchPosts());
   }, [dispatch]);
-
-  const fetchPosts = (): any => {
-    return async function fetchPostsThunk(dispatch: any, getState: any) {
-      // action을 보내거나, state를 읽는 로직 작성
-      const response = await axios.get(
-        "https://jsonplaceholder.typicode.com/posts"
-      );
-      dispatch({ type: "FETCH_POSTS", payload: response.data });
-    };
-  };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTodoValue(e.target.value);
