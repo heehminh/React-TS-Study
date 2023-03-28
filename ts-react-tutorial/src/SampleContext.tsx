@@ -20,7 +20,7 @@ type SampleDispatch = Dispatch<Action>;
 
 // context
 const SampleStateContext = createContext<State | null>(null);
-const SampeleDispatchContext = createContext<SampleDispatch | null>(null);
+const SampleDispatchContext = createContext<SampleDispatch | null>(null);
 
 // reducer
 function reducer(state: State, action: Action): State {
@@ -61,9 +61,9 @@ export function SampleProvider({ children }: { children: React.ReactNode }) {
 
   return (
     <SampleStateContext.Provider value={state}>
-      <SampeleDispatchContext.Provider value={dispatch}>
+      <SampleDispatchContext.Provider value={dispatch}>
         {children}
-      </SampeleDispatchContext.Provider>
+      </SampleDispatchContext.Provider>
     </SampleStateContext.Provider>
   );
 }
@@ -76,7 +76,7 @@ export function useSampleState() {
 }
 
 export function useSampleDispatch() {
-  const dispatch = useContext(SampeleDispatchContext);
+  const dispatch = useContext(SampleDispatchContext);
   if (!dispatch) throw new Error("Cannot find SampleProvider");
   return dispatch;
 }
