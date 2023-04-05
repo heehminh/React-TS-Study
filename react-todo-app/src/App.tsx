@@ -13,7 +13,7 @@ function App() {
           <h1>{`Todo List`}</h1>
         </div>
         <InsertItem items={items} setItems={setItems}></InsertItem>
-        <ItemList></ItemList>
+        <ItemList items={items} setItems={setItems}></ItemList>
       </div>
     </div>
   );
