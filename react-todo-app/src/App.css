@@ -4,7 +4,6 @@
 }
 
 .container {
-  background: linear-gradient(to right bottom, #529252, #192831);
   width: 100%;
   min-height: 100vh;
   display: flex;
@@ -37,18 +36,8 @@
   font-size: 20px;
   color: #fff;
   background-color: #000;
-  border: 1px soild red;
+  border: 1px solid red;
   border-radius: 10px;
-}
-
-.button-add {
-  width: 70px;
-  padding: 15px 15px;
-  font-size: 20px;
-  border-radius: 10px;
-  border: 0;
-  background-color: #529252;
-  cursor: pointer;
 }
 
 .list-item {

@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { Item } from "../types/type";
 import { v4 as uuid } from "uuid";
+import Button from "@mui/material/Button";
+import TextField from "@mui/material/TextField";
+import Grid from "@mui/material/Grid";
 
 interface Props {
   items: Item[];
@@ -21,15 +24,26 @@ const InsertItem = ({ items, setItems }: Props) => {
 
   return (
     <>
-      <input
-        className="task-input"
-        type="text"
-        value={itemName}
-        onChange={changeItemName}
-      />
-      <button className="button-add" onClick={clickButton}>
-        생성
-      </button>
+      <Grid container>
+        <Grid item xs>
+          <TextField
+            fullWidth
+            variant="outlined"
+            type="text"
+            value={itemName}
+            onChange={changeItemName}
+          />
+        </Grid>
+        <Grid item>
+          <Button
+            variant="contained"
+            sx={{ ml: 3, mt: 1 }}
+            onClick={clickButton}
+          >
+            생성
+          </Button>
+        </Grid>
+      </Grid>
     </>
   );
 };
