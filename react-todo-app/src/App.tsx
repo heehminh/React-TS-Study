@@ -14,11 +14,11 @@ function App() {
     localStorage.setItem("todos", JSON.stringify(items));
   });
   return (
-    <div>
-      <div>
-        <div>
+    <div className="container">
+      <div className="app-wrapper">
+        <header>
           <h1>{`Todo List`}</h1>
-        </div>
+        </header>
         <InsertItem items={items} setItems={setItems}></InsertItem>
         <ItemList items={items} setItems={setItems}></ItemList>
       </div>
