@@ -13,6 +13,7 @@ export const deleteItem = (id: string) => ({
   type: DELETE,
   payload: id,
 });
+
 export const clearItem = (id: string) => ({
   type: CLEAR,
   payload: id,
