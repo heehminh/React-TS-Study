@@ -1,4 +1,4 @@
-import React, { createContext, useState, useContext } from "react";
+import { createContext, useState, useContext } from "react";
 
 interface ContextProps {
   theme: string;
@@ -13,6 +13,7 @@ interface Props {
 
 export const ThemeContextProvider = ({ children }: Props) => {
   const [theme, setTheme] = useState("light");
+  console.log(theme);
   const toggleTheme = () => {
     if (theme === "light") {
       setTheme("dark");

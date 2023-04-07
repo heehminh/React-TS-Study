@@ -8,10 +8,9 @@ const Container = styled.div`
 
 const Switch = () => {
   const { toggleTheme } = useThemeContext();
-
   return (
     <Container>
-      <button>{`테마 변경`}</button>
+      <button onClick={toggleTheme}>{`스위치`}</button>
     </Container>
   );
 };
