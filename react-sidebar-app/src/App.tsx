@@ -5,7 +5,7 @@ import { lightTheme, darkTheme } from "./styles/theme";
 import { ThemeProvider } from "styled-components";
 import { GlobalStyles } from "./styles/global";
 
-function App() {
+const App = () => {
   const { theme } = useThemeContext();
 
   return (
@@ -14,6 +14,6 @@ function App() {
       <Main />
     </ThemeProvider>
   );
-}
+};
 
 export default App;
