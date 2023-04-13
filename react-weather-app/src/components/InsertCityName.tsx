@@ -27,6 +27,26 @@ const InsertCityName = ({ setCityName }: Props) => {
 
 export default InsertCityName;
 
-const Container = styled.div``;
-const InputCityName = styled.input``;
-const SearchButton = styled.button``;
+const Container = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+`;
+
+const InputCityName = styled.input`
+  border: none;
+  border-radius: 10px;
+  font-size: 20px;
+  padding-left: 10px;
+`;
+const SearchButton = styled.button`
+  background-color: #81d1ff;
+  border: none;
+  padding: 10px;
+  color: white;
+  border-radius: 10px;
+  cursor: pointer;
+  &:hover {
+    transform: translateY(-5px);
+  }
+`;

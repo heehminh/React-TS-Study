@@ -51,8 +51,8 @@ const App = () => {
     <Container img={weatherImg[weatherName]}>
       <Box>
         <ProjectTitle>WEATHER PROJECT</ProjectTitle>
-        <InsertCityName setCityName={setCityName} />
         <PrintWeather weather={weather} />
+        <InsertCityName setCityName={setCityName} />
       </Box>
     </Container>
   );
@@ -71,6 +71,19 @@ const Container = styled.div<ContainerProps>`
   align-items: center;
   justify-content: center;
   background-image: url(${(props) => props.img});
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-position: center;
+  transition: all 0.2s ease-in;
 `;
-const Box = styled.div``;
-const ProjectTitle = styled.h1``;
+const Box = styled.div`
+  text-align: center;
+  border: 3px solid white;
+  border-radius: 10px;
+  padding: 5rem;
+  background-color: rgba(255, 255, 255, 0.3);
+`;
+const ProjectTitle = styled.h1`
+  color: white;
+  margin: 1rem;
+`;

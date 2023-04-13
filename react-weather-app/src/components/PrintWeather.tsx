@@ -18,4 +18,7 @@ const PrintWeather = ({ weather }: Props) => {
 export default PrintWeather;
 
 const Container = styled.div``;
-const WeatherInfo = styled.h2``;
+
+const WeatherInfo = styled.h2`
+  color: white;
+`;
