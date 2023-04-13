@@ -1,6 +1,9 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import styled from "styled-components";
 import "./App.css";
+import InsertCityName from "./components/InsertCityName";
+import PrintWeather from "./components/PrintWeather";
 import { WeatherData } from "./type/types";
 
 const api = {
@@ -27,7 +30,19 @@ const App = () => {
     getWeather();
   }, [cityName]);
 
-  return <div>App</div>;
+  return (
+    <Container>
+      <Box>
+        <ProjectTitle>WEATHER PROJECT</ProjectTitle>
+        <InsertCityName />
+        <PrintWeather weather={weather} />
+      </Box>
+    </Container>
+  );
 };
 
 export default App;
+
+const Container = styled.div``;
+const Box = styled.div``;
+const ProjectTitle = styled.h1``;
