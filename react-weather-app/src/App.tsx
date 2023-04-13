@@ -5,6 +5,23 @@ import "./App.css";
 import InsertCityName from "./components/InsertCityName";
 import PrintWeather from "./components/PrintWeather";
 import { WeatherData } from "./type/types";
+import Clouds from "./assets/cloud.jpg";
+import Clear from "./assets/clear.jpg";
+import Rain from "./assets/rain.jpg";
+import Drizzle from "./assets/drizzle.jpg";
+import Snow from "./assets/snow.jpg";
+import Thunderstorm from "./assets/thunderstorm.jpg";
+
+const weatherImg: {
+  [key: string]: string;
+} = {
+  Clouds: Clouds,
+  Clear: Clear,
+  Rain: Rain,
+  Drizzle: Drizzle,
+  Snow: Snow,
+  Thunderstorm: Thunderstorm,
+};
 
 const api = {
   url: process.env.REACT_APP_API_URL,
@@ -31,7 +48,7 @@ const App = () => {
   }, [cityName]);
 
   return (
-    <Container>
+    <Container img={weatherImg[weatherName]}>
       <Box>
         <ProjectTitle>WEATHER PROJECT</ProjectTitle>
         <InsertCityName setCityName={setCityName} />
@@ -43,6 +60,17 @@ const App = () => {
 
 export default App;
 
-const Container = styled.div``;
+interface ContainerProps {
+  img: string | undefined;
+}
+
+const Container = styled.div<ContainerProps>`
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url(${(props) => props.img});
+`;
 const Box = styled.div``;
 const ProjectTitle = styled.h1``;
