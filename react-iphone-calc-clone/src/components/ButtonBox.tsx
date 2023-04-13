@@ -39,7 +39,15 @@ const allButton = [
 ];
 
 const ButtonBox = () => {
-  return <Container></Container>;
+  return (
+    <Container>
+      <Box>
+        {allButton.map((data) => {
+          return <Button img={data.img} color={data.color} size={data.size} />;
+        })}
+      </Box>
+    </Container>
+  );
 };
 
 export default ButtonBox;
