@@ -34,7 +34,7 @@ const App = () => {
     <Container>
       <Box>
         <ProjectTitle>WEATHER PROJECT</ProjectTitle>
-        <InsertCityName />
+        <InsertCityName setCityName={setCityName} />
         <PrintWeather weather={weather} />
       </Box>
     </Container>
