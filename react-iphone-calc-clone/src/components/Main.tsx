@@ -1,20 +1,20 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import styled from "styled-components";
-import ButtonBox from "./ButtonBox";
 import Screen from "./Screen";
+import ButtonBox from "./ButtonBox";
 
 const Container = styled.div`
   width: 350px;
   height: 700px;
-  background-color: #000;
+  background-color: black;
   display: flex;
   flex-direction: column;
   justify-content: center;
 `;
 
 const Main = () => {
-  const [calcSum, setCalcSum] = useState("0");
-  const [operation, setOperation] = useState("");
+  const [calcSum, setCalcSum] = useState(`0`);
+  const [operation, setOperation] = useState(``);
   const [prevSum, setPrevSum] = useState(0);
 
   return (

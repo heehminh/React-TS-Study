@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "styled-components";
 import Button from "./Button";
 
@@ -61,6 +60,7 @@ const ButtonBox = ({
         {allButton.map((data) => {
           return (
             <Button
+              key={data.img}
               img={data.img}
               color={data.color}
               size={data.size}

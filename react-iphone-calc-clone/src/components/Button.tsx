@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import styled, { css } from "styled-components";
 import div from "../assets/div.png";
 import equal from "../assets/equal.png";
 import minus from "../assets/minus.png";
@@ -18,7 +19,6 @@ import seven from "../assets/7.png";
 import eight from "../assets/8.png";
 import nine from "../assets/9.png";
 import dot from "../assets/dot.png";
-import styled from "styled-components";
 
 type ChangeImg = {
   [key: string]: string;
@@ -56,33 +56,58 @@ const Container = styled.div<ContainerProps>`
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: ${({ size }) => (size === 1 ? `50%` : `40px`)};
+  border-radius: ${({ size }) => (size == 1 ? `50%` : `40px`)};
   background-color: ${({ color }) => color};
   grid-column: span ${({ size }) => size};
   cursor: pointer;
 
+  h1 {
+    color: black;
+  }
   img {
     max-width: 50%;
     height: auto;
   }
+
+  ${({ imgName }) =>
+    imgName === "0"
+      ? css`
+          justify-content: start;
+          padding-left: 30px;
+        `
+      : css``}
+
+  ${({ imgName }) =>
+    imgName === "dot"
+      ? css`
+          align-items: end;
+          padding-bottom: 20px;
+        `
+      : css``}
 `;
 
 const numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+
 const oper = ["div", "plus", "minus", "mul"];
+
 const calculator = (operation: string, prevSum: number, calcSum: string) => {
   const nowSum = parseFloat(calcSum);
   if (operation === "plus") {
     return prevSum + nowSum;
   }
+
   if (operation === "minus") {
     return prevSum - nowSum;
   }
+
   if (operation === "mul") {
     return prevSum * nowSum;
   }
+
   if (operation === "div") {
     return prevSum / nowSum;
   }
+
   return 0;
 };
 
@@ -137,17 +162,21 @@ const Button = ({
           setCalcSum("0");
           setPrevSum(0);
           break;
+
         case "plusminus":
           setCalcSum(String(parseFloat(calcSum) * -1));
           break;
+
         case "percent":
           setCalcSum(String(parseFloat(calcSum) / 100));
           break;
+
         case "dot":
           calcSum.includes(".")
             ? setCalcSum(calcSum)
             : setCalcSum(calcSum + ".");
           break;
+
         case "equal":
           setCalcSum(String(calculator(operation, prevSum, calcSum)));
           break;
@@ -156,7 +185,12 @@ const Button = ({
   };
 
   return (
-    <Container onClick={clickButton} imgName={img} color={color} size={size}>
+    <Container
+      onClick={() => clickButton()}
+      imgName={img}
+      color={color}
+      size={size}
+    >
       <img src={changeImg[img]} alt="" />
     </Container>
   );
