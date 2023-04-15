@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 const Container = styled.div`
   width: 100%;
@@ -18,6 +18,27 @@ const Number = styled.h1<NumberProps>`
   font-size: 100px;
   font-weight: 300;
   padding: 0 20px 10px 0;
+
+  ${({ numberLen }) => {
+    switch (numberLen) {
+      case 7:
+        return css`
+          font-size: 80px;
+        `;
+      case 8:
+      case 9:
+        return css`
+          font-size: 75px;
+        `;
+      case 10:
+      case 11:
+      case 12:
+      case 13:
+        return css`
+          font-size: 55px;
+        `;
+    }
+  }}
 `;
 
 interface Props {
