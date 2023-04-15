@@ -20,7 +20,14 @@ const Main = () => {
   return (
     <Container>
       <Screen calcSum={calcSum} />
-      <ButtonBox />
+      <ButtonBox
+        operation={operation}
+        setOperation={setOperation}
+        calcSum={calcSum}
+        setCalcSum={setCalcSum}
+        prevSum={prevSum}
+        setPrevSum={setPrevSum}
+      />
     </Container>
   );
 };
