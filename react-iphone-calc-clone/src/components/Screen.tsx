@@ -9,7 +9,11 @@ const Container = styled.div`
   align-items: end;
 `;
 
-const Number = styled.h1`
+interface NumberProps {
+  numberLen: number;
+}
+
+const Number = styled.h1<NumberProps>`
   color: #fff;
   font-size: 100px;
   font-weight: 300;
@@ -21,9 +25,15 @@ interface Props {
 }
 
 const Screen = ({ calcSum }: Props) => {
+  // 정규식 패턴: 숫자들을 찾아서, 3글자씩 끊어서, 추가
+  // 1234567890abc => 1,234,567,890
+  const calcSumNumber = calcSum
+    .substring(0, 10)
+    .replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+
   return (
     <Container>
-      <Number>{calcSum}</Number>
+      <Number numberLen={calcSumNumber.length}>{calcSumNumber}</Number>
     </Container>
   );
 };
